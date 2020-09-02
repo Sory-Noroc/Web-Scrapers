@@ -63,9 +63,7 @@ def search_target():
       print('{:<60}\n{}\n{}\n'.format(i['title'], i['price']['formatted_current_price'], 
             i['images'][0]['base_url']+i['images'][0]['primary']))
 
-
-# The program won't run in Sublime because of the not supported input
-product = 'truck'.strip()
+product = input('What are you searching for?').strip()
 formatted_product = '+'.join(product.split(' '))  # The website accepts only splitted words by '+'
 search_walmart()
 search_target()

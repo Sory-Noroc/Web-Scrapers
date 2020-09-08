@@ -1,3 +1,5 @@
+# Script that scrapes for hotels on booking.com, gets all the info about them and writes to a json file. The input is a booking hotel link.
+
 import json
 import requests
 from bs4 import BeautifulSoup

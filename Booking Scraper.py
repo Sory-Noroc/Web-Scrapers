@@ -24,7 +24,6 @@ class Hotel:
 		self.hotel_dict['numberOfStars'] = [
 		# There we extract the number of stars from the string looking like so '4 star rating'
 		char for char in soup.find('i', class_=" bk-icon-wrapper bk-icon-stars star_track ")['title'] if char.isdigit()
-
 		][0]
 
 		for rating_tag in soup.find_all('div', class_='c-score-bar'):  # Looping through ratings (they got the same class)
@@ -53,7 +52,8 @@ class Hotel:
 			dump(self.hotel_dict, json_file, ensure_ascii=False, indent=4)  # writing to the file
 
 
-# Below are the links to be inserted for data extracting
-booking_links = ['https://www.booking.com/hotel/ch/admiral-lugano.en-gb.html?label=gen173nr-1FCAsoLEIOYWRtaXJhbC1sdWdhbm9ICVgEaI4BiAEBmAEJuAEZyAEP2AEB6AEB-AECiAIBqAIDuAK_oM76BcACAdICJGJlODM1Mzk2LWY4NzYtNGE3My05MDZlLTgxMWEyZjhhNjFjONgCBeACAQ;sid=752cde01e1a586181df6cf477b82d798;all_sr_blocks=6512520_109855465_0_2_0;checkin=2020-09-06;checkout=2020-09-10;dest_id=-2552969;dest_type=city;dist=0;group_adults=2;group_children=0;hapos=1;highlighted_blocks=6512520_109855465_0_2_0;hp_group_set=0;hpos=1;no_rooms=1;room1=A%2CA;sb_price_type=total;sr_order=popularity;sr_pri_blocks=6512520_109855465_0_2_0__70650;srepoch=1599326625;srpvid=59ff7a50459a012d;type=total;ucfs=1&#hotelTmpl']
-if booking_links:  # Initiating the process for every link
-	hotels_dict = {f'name{index}': Hotel(link=link).dict_to_json() for index, link in enumerate(booking_links)}
+# Below is the link to be inserted for data extracting
+
+booking_link = input('Paste link: ')
+scraped_hotel = Hotel(booking_link)
+scraped_hotel.dict_to_json()  # Voila

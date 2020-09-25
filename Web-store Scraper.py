@@ -52,7 +52,7 @@ def search_target():
     The data is stored as a json file from which the needed products and their price will be extracted.
     '''
 
-    # This is the url to the API (not the website)
+    # This is the url to the target API (not the website)
     url = f'''https://redsky.target.com/v2/plp/search/?channel=web&count=96&keyword={formatted_product}
               &offset=0&pricing_store_id=3991&key=ff457966e64d5e877fdbad070f276d18ecec4a01'''
 

@@ -6,13 +6,13 @@ from time import sleep
 def search_walmart():
     # Searches the web for the asked product and prints what it finds
     res = requests.get(f'https://www.walmart.com/search/?query={product.lower()}' + ''.join(sys.argv[1:]))
-
+    # Checking for connection
     try: 
       res.raise_for_status()
     except requests.exceptions.HTTPError: 
       print('Connection Error')  # In case the connection fails
 
-    else:
+    else:  # If there was no error start the process
       soup = BeautifulSoup(res.text, "html.parser")
       print('Walmart.com: \n')
 

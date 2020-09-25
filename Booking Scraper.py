@@ -1,6 +1,6 @@
 # Script that scrapes for hotels on booking.com, gets all the info about them and writes to a json file. The input is a booking hotel link.
 
-import json
+from json import dump
 import requests
 from bs4 import BeautifulSoup
 
@@ -50,7 +50,7 @@ class Hotel:
 
 	def dict_to_json(self):
 		with open(f"{self.link.split('/')[-1].split('html')[0]}.json", 'w') as json_file:  # This mess is to choose a normal file name
-			json.dump(self.hotel_dict, json_file, ensure_ascii=False, indent=4)  # writing to the file
+			dump(self.hotel_dict, json_file, ensure_ascii=False, indent=4)  # writing to the file
 
 
 # Below are the links to be inserted for data extracting

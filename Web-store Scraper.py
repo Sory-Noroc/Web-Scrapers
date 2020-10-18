@@ -1,4 +1,5 @@
-import requests, sys
+import requests
+import sys
 from bs4 import BeautifulSoup, element
 from selenium import webdriver, common
 from time import sleep

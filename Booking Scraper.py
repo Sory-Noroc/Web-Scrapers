@@ -8,7 +8,10 @@ from bs4 import BeautifulSoup
 class Hotel:
 	def __init__(self, link):
 		'''
-		.strip('\n') and .replace('\n', '') will be used a lot to get rid of '\n's in the data and make it look good
+		.strip('\n') and .replace('\n', '') will be used a lot to get rid of '\n's in the data and make it look good.
+		The constructor of class 'Hotel', this function is called with Hotel(). This function does all of the scraping.
+
+		:param link: The input link from the user
 		'''
 		self.link = link  # To work with the json later
 		res = requests.get(link)  # accessing the website source code
@@ -47,7 +50,10 @@ class Hotel:
 
 		self.hotel_dict['Facilities'] = facilities  # Adding the facilities to our main dictionary
 
-	def dict_to_json(self):
+	def write_dict_to_json(self):
+		"""
+		A public function intended to be called from outside of the class, which writes the scraped data to a file.
+		"""
 		with open(f"{self.link.split('/')[-1].split('html')[0]}.json", 'w') as json_file:  # This mess is to choose a normal file name
 			dump(self.hotel_dict, json_file, ensure_ascii=False, indent=4)  # writing to the file
 
@@ -56,4 +62,4 @@ class Hotel:
 
 booking_link = input('Paste link: ')
 scraped_hotel = Hotel(booking_link)
-scraped_hotel.dict_to_json()  # Voila
+scraped_hotel.write_dict_to_json()  # Voila
